@@ -14,12 +14,12 @@ const props = defineProps({
 <template>
   <div class="flex flex-col text-center">
     <h1
-      class="text-4xl text-basic-gradient"
+      class="text-[32px] font-semibold text-basic-gradient"
     >
       {{props.text}}
     </h1>
     <span
-      class="text-lg text-white/60"
+      class="font-sf-regular text-[16px] max-w-[300px] text-black/60"
     >
       {{props.description}}
     </span>

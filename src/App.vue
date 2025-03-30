@@ -5,6 +5,6 @@
 
 <style>
 .text-basic-gradient{
-  @apply bg-gradient-to-r from-blue-100 to-indigo-100 text-transparent bg-clip-text
+  @apply bg-gradient-to-r from-indigo-400 to-purple-400 text-transparent bg-clip-text;
 }
 </style>
