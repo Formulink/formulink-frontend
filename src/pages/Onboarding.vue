@@ -5,6 +5,7 @@ import Second from '@/components/onboarding/pages/second.vue'
 import Third from '@/components/onboarding/pages/third.vue'
 import Fourth from '@/components/onboarding/pages/fourth.vue'
 import OnboardingButton from '@/components/onboarding/components/Onboarding-button.vue'
+import navigateTo from '@/composables/navigate.ts'
 
 const currentPage = ref<number>(1);
 
@@ -14,7 +15,7 @@ const currentPageComponent = computed(() => {
     case 2: return Second;
     case 3: return Third;
     case 4: return Fourth;
-    default: return First;
+    case 5: return navigateTo("/");
   }
 });
 
@@ -27,8 +28,10 @@ const nextButtonText = computed(() => {
   }
 })
 
+
+
 const changeCurrentPage = () => {
-  if (currentPage.value < 4) {
+  if (currentPage.value < 5) {
     currentPage.value++;
   }
 };
