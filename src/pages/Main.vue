@@ -1,8 +1,29 @@
 <script setup lang="ts">
 import { Search } from 'lucide-vue-next'
-
 import Icon_standalone from '../../public/icon_standalone.vue'
 import FDay from '@/components/main/FDay.vue'
+import { onMounted, ref } from 'vue'
+import type { Formula } from '@/types/formula.ts'
+
+
+const formulas = ref<Formula>([])
+const error = ref<string | null>(null)
+
+onMounted(async () => {
+  try {
+    const res = await fetch('http://localhost:8082/formulas/fday')
+    if (!res.ok) throw new Error(`Ошибка: ${res.status}`)
+    const data = await res.json()
+    formulas.value = data
+  } catch (err: never) {
+    error.value = err.message
+  }
+
+  console.log(formulas.value.name)
+})
+
+
+
 </script>
 
 
@@ -20,9 +41,9 @@ import FDay from '@/components/main/FDay.vue'
     </div>
 
 <!--    f of the day-->
-    <div class="appearing flex flex-col text-start gap-4 ">
+    <div v-if="formulas" class="appearing flex flex-col text-start gap-4 ">
       <h1 class="text-3xl font-sf-bold">Формула дня</h1>
-      <FDay f="F = ma" seq="text"/>
+      <FDay  :name="formulas."/>
     </div>
 
 

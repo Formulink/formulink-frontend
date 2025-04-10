@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Book, Home, Search, Star, User } from 'lucide-vue-next'
 import navigateTo from '@/funcs/navigate.ts'
-import { computed, onMounted } from 'vue'
+import { computed } from 'vue'
 const els = [
   {url: "/", icon: Home},
   {url: "/Formulas", icon: Book},
