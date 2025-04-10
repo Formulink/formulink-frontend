@@ -10,7 +10,7 @@ body, html{
 
 #app{
   /*padding: 32px;*/
-  background-color: white;
+  background-color: #f7f8f8;
   color: black;
   font-family: sf-regular, sans-serif;
 }

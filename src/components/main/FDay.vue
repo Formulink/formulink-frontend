@@ -1,12 +1,29 @@
 <script setup lang="ts">
 import { Heart, Clock, ChevronRight } from 'lucide-vue-next'
 import navigateTo from '@/funcs/navigate.ts'
-import type { Formula } from '@/types/formula.ts'
+
+import { computed, type PropType } from 'vue'
+import {GetSectionNameById} from '@/funcs/getSectionNameById.ts'
+
+
+// const props = defineProps<Formula>()
 
 const props = defineProps({
-  f: Formula,
-
+  id: String,
+  sectionId: Number,
+  name: String,
+  description: String,
+  expression: String,
+  parameters: {
+    type: Array as PropType<string[]>,
+  },
+  difficulty: Number,
 })
+
+const sectionName = computed(()=>{
+  return GetSectionNameById(props.sectionId)
+})
+
 </script>
 
 <template>
@@ -14,8 +31,8 @@ const props = defineProps({
     <!-- header -->
     <div class="flex justify-between items-center w-full">
       <div class="flex flex-col">
-        <span class="text-lg text-basic-gradient">{{ props.f.Id  }}</span>
-        <h1 class="text-main-blue font-bold text-5xl">{{ props.f.name }}</h1>
+        <span class="text-lg text-basic-gradient">{{ sectionName }}</span>
+        <h1 class="text-main-blue font-bold text-5xl">{{ props.name }}</h1>
       </div>
       <div class="hover:cursor-pointer flex items-center bg-white justify-center rounded-full p-2.5">
         <Heart />
@@ -23,7 +40,7 @@ const props = defineProps({
     </div>
 
     <!-- description -->
-    <span class="font-sf-regular">{{ props.f.Description }}</span>
+    <span class="font-sf-regular">{{ props.description }}</span>
 
     <!-- footer -->
     <div class="flex justify-between items-center w-full ">
@@ -32,7 +49,11 @@ const props = defineProps({
         <span class="font-sf-regular text-black/40">Добавлено 2 дня назад</span>
       </div>
       <div @click="navigateTo('/formulas/' + '')" class="cursor-pointer flex gap-2">
-        <span class="text-main-blue">Открыть</span>
+        <span
+          class="text-main-blue cursor-pointer"
+          @click="navigateTo('/formulas/' + props.sectionId.toString() + '/' + props.id.toString())">
+          Открыть
+        </span>
         <ChevronRight class="text-main-blue" />
       </div>
     </div>
