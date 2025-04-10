@@ -28,7 +28,7 @@ import FDay from '@/components/main/FDay.vue'
 
 <!--   categories -->
     <div class="appearing flex flex-col text-start gap-4">
-      <h1 class="text-3xl font-sf-bold">Категория</h1>
+      <h1 class="text-3xl font-sf-bold">Категории</h1>
 <!--сюды айтем-->
     </div>
 

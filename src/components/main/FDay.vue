@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {Heart, Clock, ChevronRight} from 'lucide-vue-next'
-import navigateTo from '@/composables/navigate.ts'
+import navigateTo from '@/funcs/navigate.ts'
 const props = defineProps({
   seq: String,
   f: String,

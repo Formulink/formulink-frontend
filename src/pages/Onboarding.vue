@@ -5,7 +5,7 @@ import Second from '@/components/onboarding/pages/second.vue'
 import Third from '@/components/onboarding/pages/third.vue'
 import Fourth from '@/components/onboarding/pages/fourth.vue'
 import OnboardingButton from '@/components/onboarding/components/Onboarding-button.vue'
-import navigateTo from '@/composables/navigate.ts'
+import navigateTo from '@/funcs/navigate.ts'
 
 const currentPage = ref<number>(1);
 

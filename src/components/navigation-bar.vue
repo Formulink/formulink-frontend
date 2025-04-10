@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Book, Home, Search, Star, User } from 'lucide-vue-next'
-import navigateTo from '@/composables/navigate.ts'
+import navigateTo from '@/funcs/navigate.ts'
+import { computed, onMounted } from 'vue'
 const els = [
   {url: "/", icon: Home},
   {url: "/Formulas", icon: Book},
@@ -9,10 +10,14 @@ const els = [
   {url: "/Profile", icon: User},
 ];
 
+const url : string = computed(()=>{
+  return window.location.href.toLowerCase()
+})
+
 </script>
 
 <template>
-  <div class="absolute bottom-0 left-0">
+  <div v-if="!url.includes('onboarding')" class="absolute bottom-0 left-0">
 
     <div class="w-screen bg-white/80 flex items-center px-[10vw] justify-between gap-2 backdrop-blur-sm h-[80px] border border-t border-gray-200">
       <div
