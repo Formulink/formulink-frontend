@@ -47,6 +47,7 @@ watch(sections, (newVal) => {
       />
     </div>
     <NothingHere class="w-full h-full" v-else/>
+    <div class="h-40 bg-transparent"></div>
   </div>
 
 </template>

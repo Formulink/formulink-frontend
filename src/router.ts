@@ -14,6 +14,7 @@ const routes = [
   { path: '/subject/:id', component: SubjectSections },
   { path: '/subject/:id/:section_id', component: SectionsFormulas },
   { path: '/subject/:id/:section_id/:formula_id', component: FormulaPage },
+  { path: '/formulas/:formula_id', component: FormulaPage },
 
 ]
 

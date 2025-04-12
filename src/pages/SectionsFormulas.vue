@@ -53,6 +53,7 @@ watch(formulas, (newVal) => {
     </div>
     <NothingHere class="w-full h-full" v-else/>
   </div>
+  <div class="h-40 bg-transparent"></div>
 
 </template>
 

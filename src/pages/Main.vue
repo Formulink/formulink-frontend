@@ -39,7 +39,7 @@ onMounted(async()=>{
 
 
 <template>
-  <div class="appearing flex flex-col p-8 gap-6 relative z-0"
+  <div class="appearing min-h-screen flex flex-col p-8 gap-6 relative z-0"
       :class="searchFocused ? 'overflow-hidden' : ''"
   >
     <icon_standalone class="size-12"/>
@@ -105,6 +105,7 @@ onMounted(async()=>{
     </div>
   </div>
 
+  <div class="h-40 bg-transparent"></div>
 </template>
 
 

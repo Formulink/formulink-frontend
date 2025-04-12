@@ -32,3 +32,17 @@ body, html{
   src: url("./fonts/sf-regular.OTF") format("opentype");
 }
 
+.katex {
+  font-family: monospace !important;
+}
+
+.katex,
+.katex .mathnormal,
+.katex .mord,
+.katex .mop {
+  font-family: 'FiraCode Nerd Font Mono', 'Menlo', 'Courier', monospace !important;
+  font-size: 32px !important;
+  font-style: normal !important;
+}
+
+

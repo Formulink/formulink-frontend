@@ -1,7 +1,9 @@
 
-<template>
-    <RouterView/>
+<template >
+  <div class="max-w-7xl mx-auto">
+    <RouterView />
     <NavigationBar class="relative" />
+  </div>
 </template>
 
 <style>

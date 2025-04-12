@@ -30,6 +30,7 @@ onMounted(async ()=>{
         :id = item.id
       />
     </div>
+    <div class="h-40 bg-transparent"></div>
   </div>
 
 </template>
