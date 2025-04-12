@@ -116,20 +116,15 @@ onMounted(async () => {
 
       <div class="bg-white rounded-3xl shadow-sm p-6 md:p-8">
         <div class="flex items-center gap-2 mb-4">
-          <Info class="w-5 h-5 text-emerald-600" />
-          <h2 class="text-xl font-bold">Дополнительные материалы</h2>
+          <Info class="w-5 h-5 " />
+          <h2 class="text-xl font-bold">Задачи</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition cursor-pointer">
-            <h3 class="font-medium">Примеры решения задач</h3>
-            <p class="text-sm text-gray-600">Практические примеры использования формулы</p>
-          </div>
-          <div class="bg-gray-50 p-4 rounded-xl hover:bg-gray-100 transition cursor-pointer">
-            <h3 class="font-medium">Интерактивный тренажер</h3>
-            <p class="text-sm text-gray-600">Проверьте свои знания на практике</p>
-          </div>
+        <div>
+          тут будут задачи
         </div>
+
+
       </div>
 
       <div class="h-40 bg-transparent"></div>

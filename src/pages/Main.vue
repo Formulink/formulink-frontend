@@ -5,7 +5,7 @@ import FDay from '@/components/main/FDay.vue'
 import { onMounted, ref } from 'vue'
 import type { Formula } from '@/types/formula.ts'
 import type {Section} from '@/types/section.ts'
-import CategoriesCard from '@/components/categories-card.vue'
+import CategoriesCard from '@/components/cards/categories-card.vue'
 import navigateTo from '@/funcs/navigate.ts'
 
 const formula = ref<Formula | null>(null)
