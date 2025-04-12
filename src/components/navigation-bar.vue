@@ -4,19 +4,19 @@ import { computed, ref } from 'vue'
 
 const els = [
   { url: "/", icon: Home, label: "Главная" },
-  { url: "/Formulas", icon: Book, label: "Формулы" },
+  { url: "/subjects", icon: Book, label: "Формулы" },
   { url: "/Ai", icon: Star, label: "AI" },
   { url: "/Search", icon: Search, label: "Поиск" },
   { url: "/Profile", icon: User, label: "Профиль" },
 ];
 
 const url : string = computed(() => {
-  return window.location.pathname.toLowerCase() // Используем pathname для корректного сравнения
+  return window.location.pathname.toLowerCase()
 })
 
 const activeIndex = computed(() => {
-  if (url.value === '/') return 0; // Главная всегда будет первой
-  return els.findIndex(item => url.value.startsWith(item.url.toLowerCase())); // Проверяем, начинается ли путь с url элемента
+  if (url.value === '/') return 0;
+  return els.findIndex(item => url.value.startsWith(item.url.toLowerCase()));
 })
 
 const navigateTo = (path: string) => {
@@ -27,7 +27,7 @@ const hoverIndex = ref(-1);
 </script>
 
 <template>
-  <div v-if="!url.includes('onboarding')" class="fixed bottom-0 left-0 w-full flex justify-center">
+  <div v-if="!url.includes('onboarding')" class=" fixed bottom-0 left-0 w-full flex justify-center">
     <div class="navbar-container relative w-[100%] flex items-center justify-between overflow-hidden">
       <div
         v-for="(item, index) in els"

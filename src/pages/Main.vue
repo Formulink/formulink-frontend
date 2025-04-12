@@ -9,8 +9,9 @@ import CategoriesCard from '@/components/categories-card.vue'
 import navigateTo from '@/funcs/navigate.ts'
 
 const formula = ref<Formula | null>(null)
-
 const sections = ref<Section[]>([])
+
+const searchFocused = ref<boolean>(false)
 
 onMounted(async () => {
   try {
@@ -38,21 +39,33 @@ onMounted(async()=>{
 
 
 <template>
-  <div class="w-screen h-screen flex flex-col p-8 gap-6">
+  <div class="appearing flex flex-col p-8 gap-6 relative z-0"
+      :class="searchFocused ? 'overflow-hidden' : ''"
+  >
     <icon_standalone class="size-12"/>
 
-<!--    search-->
-    <div class="appearing relative">
+    <div
+      v-if="searchFocused"
+      class="fixed inset-0 bg-black/30 backdrop-blur-sm z-20"
+      @click="searchFocused = false"
+    />
+
+    <!--    search-->
+    <div class="appearing relative z-50">
       <input
-        class=" shadow-sm w-full font-regular focus:ring-0 focus:bg-gray-50 focus:outline-none border placeholder-gray-300 text-gray-400  border-gray-100 pl-10 px-2 py-3 rounded-xl "
+        @focus="searchFocused = true"
+        @blur="searchFocused = false"
+        class="z-10 transition-all duration-200 shadow-sm w-full font-regular focus:ring-0 focus:bg-gray-50 focus:outline-none border placeholder-gray-300 text-gray-400 border-gray-100 pl-10 px-2 py-3 "
+        :class="searchFocused ? 'rounded-3xl' : 'rounded-xl'"
         placeholder="Поиск формул..."
       />
-      <Search class="absolute bottom-1/4 left-[10px] text-gray-300"/>
+      <Search class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" />
     </div>
 
-<!--    f of the day-->
+
+    <!--    f of the day-->
     <div v-if="formula" class="appearing flex flex-col text-start gap-4 ">
-      <h1 class="text-3xl font-sf-bold">Формула дня</h1>
+      <h1 class="text-4xl font-sf-bold">Формула дня</h1>
       <FDay
         v-if="formula"
         :id="formula.id"
@@ -68,9 +81,10 @@ onMounted(async()=>{
 
 <!--   categories -->
     <div v-if="sections" class="appearing flex flex-col text-start gap-4">
-      <h1 class="text-3xl font-sf-bold">Категории</h1>
-      <div class="grid grid-cols-2 gap-4">
+      <h1 class="text-4xl font-sf-bold">Категории</h1>
+      <div class="grid  lg:grid-cols-2 gap-4">
         <CategoriesCard  v-for="(item, index) in sections"
+                         class="appearing"
                          :key="index"
                          :id="item.id"
                          :subject-id="item.subjectId"
@@ -79,14 +93,16 @@ onMounted(async()=>{
         />
       </div>
       <button class="text-main-blue w-full text-center" @click="navigateTo('/subjects')">Все</button>
-<!--сюды айтем-->
     </div>
 
     <div class="appearing flex flex-col text-start gap-4 ">
-      <h1 class="text-3xl font-sf-bold">Недавно просмотрено</h1>
+      <h1 class="text-4xl font-sf-bold">Недавно просмотрено</h1>
       <!--сюды айтем-->
     </div>
 
+    <div class="pb-24">
+
+    </div>
   </div>
 
 </template>
@@ -125,6 +141,24 @@ onMounted(async()=>{
 .appearing:nth-child(5) {
   animation-delay: 0.4s;
 }
+.appearing:nth-child(6) {
+  animation-delay: 0.5s;
+}
 
+.appearing:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.appearing:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+.appearing:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+.appearing:nth-child(10) {
+  animation-delay: 0.9s;
+}
 
 </style>

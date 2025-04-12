@@ -1,6 +1,6 @@
 export interface Section{
   id: number
-  subjectId: number
+  subject_id: number
   name: string
   description: string
 }

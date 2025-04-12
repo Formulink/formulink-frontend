@@ -1,7 +1,7 @@
 
 <template>
     <RouterView/>
-    <NavigationBar />
+    <NavigationBar class="relative" />
 </template>
 
 <style>

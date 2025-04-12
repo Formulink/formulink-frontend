@@ -24,3 +24,4 @@ export default defineConfigWithVueTs(
   ...oxlint.configs['flat/recommended'],
   skipFormatting,
 )
+
