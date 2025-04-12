@@ -31,7 +31,7 @@ watch(sections, (newVal) => {
 
 
 <template>
-  <div class="w-screen h-screen flex flex-col p-8 gap-6">
+  <div class="min-h-screen flex flex-col p-8 gap-6">
     <icon_standalone class="size-12"/>
 
     <div v-if="sections" class="appearing w-full flex flex-col gap-6">

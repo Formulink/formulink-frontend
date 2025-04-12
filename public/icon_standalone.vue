@@ -1,5 +1,5 @@
 <template>
-  <svg width="314" height="313" viewBox="0 0 314 313" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg @click="navigateTo('/')" width="314" height="313" viewBox="0 0 314 313" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 176.564H63.0595L188.4 313H125.34L0 176.564Z" fill="url(#paint0_linear_22_25)"/>
     <path d="M0 0H63.0595L188.4 136.436H125.34L0 0Z" fill="url(#paint1_linear_22_25)"/>
     <path d="M125.6 176.564H189.703L314 313H252.239L125.6 176.564Z" fill="url(#paint2_linear_22_25)"/>
@@ -25,3 +25,6 @@
   </svg>
 
 </template>
+<script setup lang="ts">
+import navigateTo from '@/funcs/navigate.js'
+</script>
