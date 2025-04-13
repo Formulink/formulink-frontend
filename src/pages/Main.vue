@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Search } from 'lucide-vue-next'
+
 import Icon_standalone from '../../public/icon_standalone.vue'
 import FDay from '@/components/main/FDay.vue'
 import { onMounted, ref } from 'vue'
@@ -7,18 +7,20 @@ import type { Formula } from '@/types/formula.ts'
 import type {Section} from '@/types/section.ts'
 import CategoriesCard from '@/components/cards/categories-card.vue'
 import navigateTo from '@/funcs/navigate.ts'
+import { watch } from 'vue'
 
 const formula = ref<Formula | null>(null)
 const sections = ref<Section[]>([])
 
-const searchFocused = ref<boolean>(false)
+
+
+
 
 onMounted(async () => {
   try {
     const res = await fetch('http://localhost:8082/formulas/fday')
     if (!res.ok) throw new Error(`Ошибка: ${res.status}`)
-    const data = await res.json()
-    formula.value = data
+    formula.value  = await res.json()
   } catch (err: never) {
     console.error(err)
   }
@@ -30,37 +32,38 @@ onMounted(async()=>{
     const res = await fetch("http://localhost:8082/sections")
     if (!res.ok) throw new Error(res.statusText)
     sections.value = await res.json()
+    secitons.value = shuffle(sections.value.slice(0, 6))
   } catch (error) {
     console.error(error)
   }
 })
 
+
+
+function shuffle(array) {
+  let currentIndex = array.length;
+  while (currentIndex != 0) {
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return array
+}
+
+
+
+
+
 </script>
 
 
 <template>
+
   <div class="appearing min-h-screen flex flex-col p-8 gap-6 relative z-0"
-      :class="searchFocused ? 'overflow-hidden' : ''"
   >
     <icon_standalone class="size-12"/>
-
-    <div
-      v-if="searchFocused"
-      class="fixed inset-0 bg-black/30 backdrop-blur-sm z-20"
-      @click="searchFocused = false"
-    />
-
-    <!--    search-->
-    <div class="appearing relative z-50">
-      <input
-        @focus="searchFocused = true"
-        @blur="searchFocused = false"
-        class="z-10 transition-all duration-200 shadow-sm w-full font-regular focus:ring-0 focus:bg-gray-50 focus:outline-none border placeholder-gray-300 text-gray-400 border-gray-100 pl-10 px-2 py-3 "
-        :class="searchFocused ? 'rounded-3xl' : 'rounded-xl'"
-        placeholder="Поиск формул..."
-      />
-      <Search class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" />
-    </div>
 
 
     <!--    f of the day-->
@@ -87,7 +90,7 @@ onMounted(async()=>{
                          class="appearing"
                          :key="index"
                          :id="item.id"
-                         :subject-id="item.subjectId"
+                         :subject-id="item.subject_id"
                          :name="item.name"
                          :description="item.description"
         />
@@ -105,7 +108,7 @@ onMounted(async()=>{
     </div>
   </div>
 
-  <div class="h-40 bg-transparent"></div>
+<!--  <div class="h-40 bg-transparent"></div> -->
 </template>
 
 

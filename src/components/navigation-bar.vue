@@ -5,9 +5,9 @@ import { computed, ref } from 'vue'
 const els = [
   { url: "/", icon: Home, label: "Главная" },
   { url: "/subjects", icon: Book, label: "Формулы" },
-  { url: "/Ai", icon: Star, label: "AI" },
-  { url: "/Search", icon: Search, label: "Поиск" },
-  { url: "/Profile", icon: User, label: "Профиль" },
+  { url: "/ai", icon: Star, label: "AI" },
+  { url: "/search", icon: Search, label: "Поиск" },
+  { url: "/profile", icon: User, label: "Профиль" },
 ];
 
 const url : string = computed(() => {

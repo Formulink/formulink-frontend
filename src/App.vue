@@ -1,10 +1,12 @@
-
-<template >
-  <div class="max-w-7xl mx-auto">
-    <RouterView />
-    <NavigationBar class="relative" />
+<template>
+  <div class="relative">
+    <div class="max-w-7xl mx-auto">
+      <RouterView />
+      <NavigationBar />
+    </div>
   </div>
 </template>
+
 
 <style>
 .text-basic-gradient{

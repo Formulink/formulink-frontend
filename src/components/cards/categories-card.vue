@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="p-6 w-full flex gap-4 items-center bg-white rounded-3xl cursor-pointer" @click="navigateTo('/')">
+  <div class="p-6 w-full flex gap-4 items-center bg-white rounded-3xl cursor-pointer" @click="navigateTo(`/subject/${subjectId}/${id}`)">
     <div class="flex items-center justify-center p-4 rounded-[50%] bg-gradient-to-b from-blue-800 to-blue-700">
       <ZapIcon class="text-white"/>
     </div>

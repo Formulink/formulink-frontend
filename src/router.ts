@@ -6,6 +6,7 @@ import Subjects from '@/pages/Subjects.vue'
 import SubjectSections from '@/pages/SubjectSections.vue'
 import SectionsFormulas from '@/pages/SectionsFormulas.vue'
 import FormulaPage from '@/pages/FormulaPage.vue'
+import SearchPage from '@/pages/SearchPage.vue'
 
 const routes = [
   {path: '/', component: Main},
@@ -15,6 +16,7 @@ const routes = [
   { path: '/subject/:id/:section_id', component: SectionsFormulas },
   { path: '/subject/:id/:section_id/:formula_id', component: FormulaPage },
   { path: '/formulas/:formula_id', component: FormulaPage },
+  { path: '/search', component: SearchPage },
 
 ]
 
