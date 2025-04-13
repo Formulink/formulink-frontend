@@ -5,7 +5,7 @@ import { computed } from 'vue'
 const props = defineProps({
   diff: {
     type: Number,
-    default: 0,
+    default: 1,
     validator: (value: number) => value >= 0 && value <= 3
   }
 })

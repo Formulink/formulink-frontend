@@ -5,6 +5,7 @@ import type { Formula } from '@/types/formula.ts'
 import Icon_standalone from '../../../public/icon_standalone.vue'
 import NothingHere from '@/components/nothing-here.vue'
 import FormulaCard from '@/components/cards/formula-card.vue'
+import ReturnButton from '@/components/return-button.vue'
 
 const route = useRoute()
 const formulas = ref<Formula[]>([])
@@ -31,7 +32,7 @@ watch(formulas, (newVal) => {
 
 <template>
   <div class="min-h-screen flex flex-col p-8 gap-6">
-    <icon_standalone class="size-12"/>
+    <ReturnButton :url="`/subject/${route.params.id}`"/>
 
     <div v-if="formulas" class="appearing w-full flex flex-col gap-6">
       <h1 class="font-bold text-5xl">Формулы</h1>

@@ -3,26 +3,28 @@ import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { ArrowLeft, Play, PauseIcon, Maximize2, ChevronDown, ChevronUp, Info } from 'lucide-vue-next'
 import type { Formula } from '@/types/formula.ts'
-import Icon_standalone from '../../../public/icon_standalone.vue'
 import DifficultyStars from '@/components/special/difficulty-stars.vue'
-import navigateTo from '@/funcs/navigate.ts'
 import ReturnButton from '@/components/return-button.vue'
 import 'katex/dist/katex.min.css'
+import type { Task } from '@/types/task.ts'
+import TaskCard from '@/components/cards/task-card.vue'
 
 
 const route = useRoute()
 const formula = ref<Formula>()
 const loading = ref(true)
 const error = ref<string | null>(null)
+const tasks = ref<Task[]>([])
 
 
 const subjectId = route.params.id
 const sectionId = route.params.section_id
 const formulaId = route.params.formula_id
 
+
 onMounted(async () => {
   try {
-    console.log(formulaId)
+
     loading.value = true
     const resp = await fetch(`http://localhost:8082/formulas/${formulaId}`)
     if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`)
@@ -35,6 +37,18 @@ onMounted(async () => {
     loading.value = false
   }
 })
+
+onMounted(async ()=>{
+  try{
+    const resp = await fetch(`http://localhost:8082/task/${formulaId}`)
+    tasks.value = await resp.json()
+    console.log(tasks.value)
+  } catch(err){
+    console.error(err)
+  }
+})
+
+
 
 
 </script>
@@ -114,16 +128,25 @@ onMounted(async () => {
       </div>
 
 
-      <div class="bg-white rounded-3xl shadow-sm p-6 md:p-8">
+      <div v-if="tasks.length > 0" class="bg-white rounded-3xl shadow-sm p-6 md:p-8">
         <div class="flex items-center gap-2 mb-4">
           <Info class="w-5 h-5 " />
           <h2 class="text-xl font-bold">Задачи</h2>
         </div>
 
-        <div>
-          тут будут задачи
-        </div>
+        <div class="flex flex-col gap-2">
+          <TaskCard
+            v-for="(item, index) in tasks"
+            :key="index"
+            :number="index + 1"
+            :id="item.id"
+            :formula-id="item.formula_id"
+            :difficulty="item.difficulty"
+            :task_text="item.text"
+            :result="item.result"
 
+          />
+        </div>
 
       </div>
 

@@ -6,6 +6,7 @@ import Icon_standalone from '../../../public/icon_standalone.vue'
 import SubjectsCard from '@/components/cards/subjects-card.vue'
 import SectionCard from '@/components/cards/section-card.vue'
 import NothingHere from '@/components/nothing-here.vue'
+import ReturnButton from '@/components/return-button.vue'
 
 const route = useRoute()
 const sections = ref<Section[]>([])
@@ -32,7 +33,8 @@ watch(sections, (newVal) => {
 
 <template>
   <div class="min-h-screen flex flex-col p-8 gap-6">
-    <icon_standalone class="size-12"/>
+
+    <ReturnButton url="/subjects"/>
 
     <div v-if="sections" class="appearing w-full flex flex-col gap-6">
       <h1 class="font-bold text-5xl">Разделы</h1>

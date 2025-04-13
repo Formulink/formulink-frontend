@@ -18,7 +18,7 @@ onMounted(async ()=>{
 
 <template>
   <div class="appearing min-h-screen flex flex-col p-8 gap-6">
-    <icon_standalone class="size-12"/>
+    
 
     <div v-if="subjects" class=" w-full flex flex-col gap-6">
       <h1 class="font-bold text-5xl">Предметы</h1>

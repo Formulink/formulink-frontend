@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ArrowLeft} from 'lucide-vue-next'
+import navigateTo from '@/funcs/navigate.ts'
 const props = defineProps({
   url: String,
 })
@@ -8,9 +9,8 @@ const props = defineProps({
 
 
 <template>
-  <div class="flex items-center gap-4">
+  <div @click="navigateTo(url)" class="flex items-center gap-4">
   <button
-    @click="navigateTo(url)"
     class="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
   >
     <ArrowLeft class="w-5 h-5" />
