@@ -53,8 +53,8 @@ const navigateToCard = () => {
         <h1 class="text-2xl sm:text-3xl font-medium">{{ props.name }}</h1>
         <p class="text-gray-600 text-sm">{{ props.description }}</p>
 
-        <div v-if="props.expression" class="mt-1 p-2 bg-gray-50 rounded-lg text-sm font-mono">
-          {{ props.expression }}
+        <div v-if="props.expression" class="mt-1 px-2 bg-gray-50 rounded-lg text-sm font-mono">
+          <vue-latex class="smaller" :expression="props.expression" display-mode />
         </div>
 
       </div>

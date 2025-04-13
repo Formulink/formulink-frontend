@@ -2,9 +2,7 @@
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Formula } from '@/types/formula.ts'
-import Icon_standalone from '../../public/icon_standalone.vue'
-import SubjectsCard from '@/components/cards/subjects-card.vue'
-import SectionCard from '@/components/cards/section-card.vue'
+import Icon_standalone from '../../../public/icon_standalone.vue'
 import NothingHere from '@/components/nothing-here.vue'
 import FormulaCard from '@/components/cards/formula-card.vue'
 
