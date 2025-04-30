@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import { ArrowLeft, Play, PauseIcon, Maximize2, ChevronDown, ChevronUp, Info } from 'lucide-vue-next'
 import type { Formula } from '@/types/formula.ts'
 import DifficultyStars from '@/components/special/difficulty-stars.vue'
-import ReturnButton from '@/components/return-button.vue'
+import ReturnButton from '@/components/buttons/return-button.vue'
 import 'katex/dist/katex.min.css'
 import type { Task } from '@/types/task.ts'
 import TaskCard from '@/components/cards/task-card.vue'
@@ -40,9 +40,9 @@ onMounted(async () => {
 
 onMounted(async ()=>{
   try{
-    const resp = await fetch(`http://localhost:8082/task/${formulaId}`)
+    const resp = await fetch(`http://localhost:8082/tasks/${formulaId}`)
     tasks.value = await resp.json()
-    console.log(tasks.value)
+    console.log("tasks: ", resp)
   } catch(err){
     console.error(err)
   }

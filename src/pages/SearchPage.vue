@@ -20,8 +20,7 @@ onMounted(async () => {
 
 <template>
   <div class="min-h-screen p-8 flex flex-col gap-6 bg-gray-50">
-    <icon_standalone class="size-12"/>
-    <h1 class="appearing text-4xl font-sf-bold">Поиск</h1>
+    <h1 class="font-bold text-5xl">Поиск</h1>
     <Search v-if="allFormulas.length" :formulas="allFormulas" class="appearing w-full" />
   </div>
 </template>

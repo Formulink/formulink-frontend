@@ -16,8 +16,7 @@ const data = [
 
 <template>
   <div class="min-h-screen p-8 flex flex-col gap-6 bg-gray-50">
-    <icon_standalone class="size-12"/>
-    <h1 class="appearing text-4xl font-sf-bold">Профиль</h1>
+    <h1 class="font-bold text-5xl">Профиль</h1>
 
 <!--    avatar-->
     <div class="p-4 bg-white rounded-3xl  appearing w-full flex flex-col gap-2 justify-center items-center">
@@ -43,6 +42,6 @@ const data = [
       </div>
 
     </div>
-
+    <div class="min-h-[100px]"/>
   </div>
 </template>

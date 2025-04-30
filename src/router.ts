@@ -10,6 +10,7 @@ import SearchPage from '@/pages/SearchPage.vue'
 import ProfilePage from '@/pages/profile/ProfilePage.vue'
 import FavoritesPage from '@/pages/profile/FavoritesPage.vue'
 import RecentlyPage from '@/pages/profile/RecentlyPage.vue'
+import AIPage from '@/pages/ai/AI-page.vue'
 
 const routes = [
   {path: '/', component: Main},
@@ -23,6 +24,8 @@ const routes = [
   { path: '/profile', component: ProfilePage},
   { path: '/favorites', component: FavoritesPage },
   { path: '/recently', component: RecentlyPage },
+  {path: '/ai', component: AIPage},
+  {path: '/ai/:task_id', component: AIPage}
 
 ]
 

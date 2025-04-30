@@ -6,7 +6,7 @@ import Icon_standalone from '../../../public/icon_standalone.vue'
 import SubjectsCard from '@/components/cards/subjects-card.vue'
 import SectionCard from '@/components/cards/section-card.vue'
 import NothingHere from '@/components/nothing-here.vue'
-import ReturnButton from '@/components/return-button.vue'
+import ReturnButton from '@/components/buttons/return-button.vue'
 
 const route = useRoute()
 const sections = ref<Section[]>([])

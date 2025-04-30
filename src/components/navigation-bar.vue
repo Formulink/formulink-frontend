@@ -23,11 +23,16 @@ const navigateTo = (path: string) => {
   window.location.href = path;
 }
 
+const shouldHideNavbar = computed(() => {
+  return ['/onboarding', '/ai'].some(path => url.value.includes(path));
+});
+
+
 const hoverIndex = ref(-1);
 </script>
 
 <template>
-  <div v-if="!url.includes('onboarding')" class=" fixed bottom-0 left-0 w-full flex justify-center">
+  <div v-if="!shouldHideNavbar" class=" fixed bottom-0 left-0 w-full flex justify-center">
     <div class="navbar-container relative w-[100%] flex items-center justify-between overflow-hidden">
       <div
         v-for="(item, index) in els"
@@ -52,7 +57,6 @@ const hoverIndex = ref(-1);
             size="20"
           />
 
-          <!-- Декоративный элемент -->
           <div
             class="decoration absolute inset-0 transition-all duration-500"
             :class="{

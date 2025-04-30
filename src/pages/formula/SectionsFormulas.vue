@@ -5,7 +5,7 @@ import type { Formula } from '@/types/formula.ts'
 import Icon_standalone from '../../../public/icon_standalone.vue'
 import NothingHere from '@/components/nothing-here.vue'
 import FormulaCard from '@/components/cards/formula-card.vue'
-import ReturnButton from '@/components/return-button.vue'
+import ReturnButton from '@/components/buttons/return-button.vue'
 
 const route = useRoute()
 const formulas = ref<Formula[]>([])
