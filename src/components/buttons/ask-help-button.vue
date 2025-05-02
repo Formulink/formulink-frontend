@@ -8,7 +8,7 @@ const props = defineProps({
 
 <template>
   <button
-    @click="navigateTo(`/ai/${props.taskId}`)"
+    @click="navigateTo(`/ai?id=${props.taskId}`)"
     class="neuro-button relative px-6 py-2.5 rounded-full font-medium text-white overflow-hidden">
     <span class="relative z-10 text-black">Помощь</span>
   </button>

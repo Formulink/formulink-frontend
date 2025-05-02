@@ -61,7 +61,7 @@ function shuffle(array) {
 
 <template>
 
-  <div class="appearing min-h-screen flex flex-col p-8 gap-6 relative z-0"
+  <div class="appearing h-dvh flex flex-col p-8 gap-6 relative z-0"
   >
     <icon_standalone class="size-12"/>
 
@@ -103,12 +103,8 @@ function shuffle(array) {
       <!--сюды айтем-->
     </div>
 
-    <div class="pb-24">
-
-    </div>
   </div>
 
-<!--  <div class="h-40 bg-transparent"></div> -->
 </template>
 
 

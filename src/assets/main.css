@@ -8,11 +8,24 @@ body, html{
   padding: 0;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+
 #app{
   /*padding: 32px;*/
   background-color: #f7f8f8;
   color: black;
   font-family: sf-regular, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 

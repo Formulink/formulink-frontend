@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Send } from 'lucide-vue-next'
+import { nextTick, onMounted, ref } from 'vue'
 import BigReturnButton from '@/components/buttons/big-return-button.vue'
-import AIInput from '@/pages/ai/AI-input.vue'
-import { nextTick } from 'vue'
+import AIInput from '@/components/ai/AI-input.vue'
+import { Task } from '@/types/task.ts'
+
+type Message = {
+  id: number
+  content: string
+  from: 'user' | 'ai'
+}
+
+const promptText : string = "Реши задачу, пожалуйста, id: "
+const thinking = ref<boolean>(false);
 
 const scrollToBottom = () => {
   nextTick(() => {
@@ -12,44 +20,33 @@ const scrollToBottom = () => {
   })
 }
 
+const taskId = ref<string>('')
+const task = ref<Task>()
 
-const message = ref('message')
-const textareaRef = ref<HTMLTextAreaElement | null>(null)
+onMounted( async ()=>{
+  const urlParams = new URLSearchParams(window.location.search)
+  const id = urlParams.get('id')
 
-type Message = {
-  id: number
-  content: string
-  from: 'user' | 'ai'
-}
-
-const messages = ref<Message[]>([])
-let messageId = 0
-
-
-const sendMessage = () => {
-  const content = message.value.trim()
-  if (!content) return
-
-  // Добавляем сообщение пользователя
-  messages.value.push({
-    id: messageId++,
-    content,
-    from: 'user',
-  })
-
-  message.value = ''
-  if (textareaRef.value) {
-    textareaRef.value.style.height = 'auto'
+  if (!id) {
+    taskId.value = 'nil'
+    return
   }
 
-  setTimeout(() => {
-    messages.value.push({
-      id: messageId++,
-      content: `Ответ на: "${content}"`,
-      from: 'ai',
-    })
-  }, 500)
-}
+  taskId.value = id
+  try{
+    thinking.value = true
+    const resp = await fetch(`http://localhost:8082/task/${taskId.value}`, )
+    task.value = await resp.json()
+    console.log("task: ", task.value)
+
+    // sendMessage()
+  } catch(e) {
+    console.error(e)
+  } finally {
+    thinking.value = true
+  }
+})
+
 
 
 
@@ -58,7 +55,7 @@ const sendMessage = () => {
 <template>
   <div class="min-h-screen relative p-8 flex flex-col gap-6 bg-gray-50">
     <div class="flex gap-4 items-center">
-      <BigReturnButton />
+      <BigReturnButton url="/" />
       <h1 class="font-bold text-5xl">Помощник</h1>
     </div>
     <div class="flex flex-col gap-2 max-h-[60vh] overflow-y-auto pr-2">
@@ -66,17 +63,16 @@ const sendMessage = () => {
         v-for="msg in messages"
         :key="msg.id"
         :class="msg.from === 'user' ? 'self-end bg-purple-100' : 'self-start bg-gray-200'"
-        class="max-w-[75%] rounded-3xl px-6 py-4 text-sm shadow"
+        class="max-w-[75%] rounded-2xl px-6 py-4 text-sm shadow"
       >
         {{ msg.content }}
       </div>
     </div>
 
 
-    <div class="absolute bottom-0 left-0 w-full px-6 pb-6 md:pb-8">
-      <AIInput @send-message="sendMessage" class=" border border-gray-300"/>
+    <div class="absolute bottom-4 left-0 w-full px-6 pb-6 md:pb-8">
+      <AIInput  v-if="taskId" :defaultText="taskId !== 'nil' ? promptText + taskId : ''" @send-message="sendMessage" class=" border border-gray-300"/>
     </div>
-    <div class="min-h-[100px]" />
   </div>
 </template>
 

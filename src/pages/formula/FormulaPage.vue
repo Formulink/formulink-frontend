@@ -54,7 +54,7 @@ onMounted(async ()=>{
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col p-6 md:p-8 gap-6 bg-gray-50">
+  <div class="min-h-dvh flex flex-col p-6 md:p-8 gap-6 bg-gray-50">
     <ReturnButton :url="`/subject/${subjectId}/${sectionId}`"/>
 
 
@@ -128,7 +128,7 @@ onMounted(async ()=>{
       </div>
 
 
-      <div v-if="tasks.length > 0" class="bg-white rounded-3xl shadow-sm p-6 md:p-8">
+      <div v-if="tasks?.length > 0" class="mb-20 bg-white rounded-3xl shadow-sm p-6 md:p-8">
         <div class="flex items-center gap-2 mb-4">
           <Info class="w-5 h-5 " />
           <h2 class="text-xl font-bold">Задачи</h2>
@@ -149,8 +149,6 @@ onMounted(async ()=>{
         </div>
 
       </div>
-
-      <div class="h-40 bg-transparent"></div>
     </div>
   </div>
 </template>

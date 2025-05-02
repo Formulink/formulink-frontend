@@ -17,10 +17,10 @@ onMounted(async ()=>{
 
 
 <template>
-  <div class="appearing min-h-screen flex flex-col p-8 gap-6">
-    
+  <div class="appearing h-dvh flex flex-col p-8 gap-6">
 
-    <div v-if="subjects" class=" w-full flex flex-col gap-6">
+
+    <div v-if="subjects" class="overflow-hidden w-full flex flex-col gap-6">
       <h1 class="font-bold text-5xl">Предметы</h1>
       <SubjectsCard
         v-for="(item, index) in subjects"
@@ -30,7 +30,6 @@ onMounted(async ()=>{
         :id = item.id
       />
     </div>
-    <div class="h-40 bg-transparent"></div>
   </div>
 
 </template>

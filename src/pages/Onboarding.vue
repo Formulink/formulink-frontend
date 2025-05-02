@@ -38,7 +38,7 @@ const changeCurrentPage = () => {
 </script>
 
 <template>
-  <div class="w-screen h-screen text-center overflow-hidden flex items-center justify-center relative">
+  <div class="w-screen h-dvh text-center overflow-hidden flex items-center justify-center relative">
     <transition name="slide" mode="out-in">
       <component :is="currentPageComponent" :key="currentPage" class="absolute w-full h-full flex items-center justify-center"/>
     </transition>
