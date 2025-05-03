@@ -10,14 +10,14 @@ const props = defineProps({
 const emit = defineEmits(['changeText', 'sendMessage'])
 
 const handleKeyDown = (e: KeyboardEvent): void => {
-  if (e.key === 'Enter') {
+  if (!props.thinking && e.key === 'Enter' && text.value != '') {
     handleSend()
   }
 }
 
 const handleSend = () =>{
+  emit('sendMessage', text.value)
   text.value = ''
-  emit('sendMessage')
 }
 
 const text = ref<string>(props.defaultText)

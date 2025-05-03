@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import First from '@/components/onboarding/pages/first.vue'
 import Second from '@/components/onboarding/pages/second.vue'
 import Third from '@/components/onboarding/pages/third.vue'
@@ -28,7 +28,12 @@ const nextButtonText = computed(() => {
   }
 })
 
-
+onMounted(()=>{
+  const username = window.Telegram.WebApp.initDataUnsafe.user?.user_id
+  if (username != ""){
+    localStorage.setItem("user_id", username)
+  }
+})
 
 const changeCurrentPage = () => {
   if (currentPage.value < 5) {

@@ -19,10 +19,14 @@
     "dotenv": "^16.4.7",
     "katex": "^0.16.22",
     "lucide-vue-next": "^0.485.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-vue": "^1.1.7",
     "vatex": "^0.1.0",
     "vue": "^3.5.13",
     "vue-boring-avatars": "^1.4.0",
-    "vue-router": "4"
+    "vue-markdown-render": "^2.2.1",
+    "vue-router": "4",
+    "vue3-markdown-it": "^1.0.10"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",

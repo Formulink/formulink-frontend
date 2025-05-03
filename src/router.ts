@@ -24,7 +24,8 @@ const routes = [
   { path: '/profile', component: ProfilePage},
   { path: '/favorites', component: FavoritesPage },
   { path: '/recently', component: RecentlyPage },
-  {path: '/ai', component: AIPage},
+  {path: '/ai/:conversation_id', component: AIPage},
+  {path: '/conversations', component: ConversationsPage}
 
 ]
 
