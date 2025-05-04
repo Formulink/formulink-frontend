@@ -29,12 +29,11 @@ const sectionName = computed(()=>{
 <template>
   <div
     @click="navigateTo(`/formulas/${props.id}`)"
-    class="w-full p-8 rounded-2xl shadow-2xl shadow-black/5 bg-white min-h-[150px] flex flex-col gap-2">
+    class="w-full p-8 rounded-3xl shadow-2xl shadow-black/5 bg-white min-h-[150px] flex flex-col gap-2">
     <!-- header -->
     <div class="flex justify-between items-center w-full">
       <div class="flex flex-col">
-        <span class="text-lg text-basic-gradient">{{ sectionName }}</span>
-        <h1 class="text-main-blue font-bold text-5xl">{{ props.name }}</h1>
+        <h1 class="text-main-blue font-bold text-6xl">{{ props.name }}</h1>
       </div>
       <div class="hover:cursor-pointer flex items-center bg-white justify-center rounded-full p-2.5">
         <Heart />

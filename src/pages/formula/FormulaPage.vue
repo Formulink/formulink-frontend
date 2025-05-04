@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { Info } from 'lucide-vue-next'
+import { Info, Heart } from 'lucide-vue-next'
 import type { Formula } from '@/types/formula.ts'
 import DifficultyStars from '@/components/special/difficulty-stars.vue'
 import ReturnButton from '@/components/buttons/return-button.vue'
@@ -16,6 +16,7 @@ const loading = ref(true)
 const error = ref<string | null>(null)
 const tasks = ref<Task[]>([])
 
+const isFavorite = ref<boolean>(false)
 
 const subjectId = route.params.id
 const sectionId = route.params.section_id
@@ -48,6 +49,43 @@ onMounted(async ()=>{
   }
 })
 
+onMounted(async ()=>{
+  try{
+    const resp = await fetch("http://localhost:8082/like-status", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: localStorage.getItem('user_id'),
+        formula_id: formulaId
+      })
+    })
+    console.log(resp)
+    isFavorite.value = resp.status == 200
+  } catch (e){
+    console.error(e)
+  }
+})
+
+const handleLike = async () =>{
+  try{
+    await fetch(`http://localhost:8082/like`, {
+      method: 'POST',
+      headers: {
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: localStorage.getItem('user_id'),
+        formula_id: formulaId
+      })
+    })
+  } catch (e){
+    console.error(e)
+  } finally {
+    isFavorite.value = !isFavorite.value
+  }
+}
 
 
 </script>
@@ -73,9 +111,13 @@ onMounted(async ()=>{
     <div v-else class="appearing w-full flex flex-col gap-8">
       <!-- formula header -->
       <div class="bg-white rounded-3xl shadow-sm p-6 md:p-8">
-        <div class="flex items-center gap-4 mb-4">
+        <div class="flex items-center justify-between gap-4 mb-4">
 
           <h1 class="text-3xl md:text-4xl font-bold text-gray-900">{{ formula?.name }}</h1>
+          <Heart
+            @click="handleLike"
+            :class="isFavorite ? 'fill-main-blue text-main-blue' : 'text-main-blue fill-amber-50'"
+          />
         </div>
 
         <div v-if="formula.difficulty" class="flex flex-wrap items-center gap-4 mb-6">

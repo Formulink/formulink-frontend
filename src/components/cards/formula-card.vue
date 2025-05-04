@@ -34,7 +34,7 @@ const props = defineProps({
   },
   subjectId: {
     type: String,
-    required: true
+    required: false,
   },
 })
 
