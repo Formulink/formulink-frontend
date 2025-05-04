@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { ArrowLeft, Play, PauseIcon, Maximize2, ChevronDown, ChevronUp, Info } from 'lucide-vue-next'
+import { Info } from 'lucide-vue-next'
 import type { Formula } from '@/types/formula.ts'
 import DifficultyStars from '@/components/special/difficulty-stars.vue'
 import ReturnButton from '@/components/buttons/return-button.vue'
@@ -48,12 +48,6 @@ onMounted(async ()=>{
   }
 })
 
-
-// const createConversation = await () =>{
-//   try{
-//     const resp = await fetch()
-//   }
-// }
 
 
 </script>

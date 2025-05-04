@@ -28,8 +28,8 @@ const nextButtonText = computed(() => {
   }
 })
 
-const username = ref('')
-const userId = ref('')
+const username = ref<string>('1234')
+const userId = ref<number>(1234)
 const tg = ref()
 
 const response = ref()
@@ -37,25 +37,26 @@ const response = ref()
 onMounted(async () => {
   tg.value = window.Telegram.WebApp
 
-  username.value = tg.value?.initDataUnsafe.user?.username || ''
-  userId.value = tg.value?.initDataUnsafe.user.id?.toString() || ''
+  username.value = tg.value?.initDataUnsafe.user?.username || '1234'
+  userId.value = tg.value?.initDataUnsafe.user?.id?.toString() || 1234
 
-  if (username.value && userId.value) {
-    localStorage.setItem("user_id", username.value)
+  if (username.value != '' && userId.value != 0) {
     try {
-      const resp = await fetch('http://localhost:8082/auth', {
+      const r = await fetch('http://localhost:8082/auth', {
         method: "POST",
         headers: {
           'content-type': 'application/json'
         },
         body: JSON.stringify({
-          user_id: userId.value,
+          telegram_id: userId.value,
           username: username.value
         })
       })
+      const resp = await r.json()
+      console.log(resp)
+      localStorage.setItem('user_id', resp.user_id)
 
-      response.value = await resp.json()
-      alert(respresp)
+
     } catch (e) {
       console.error(e)
     }
@@ -71,7 +72,7 @@ const changeCurrentPage = () => {
 </script>
 
 <template>
-  <div class="w-screen h-dvh text-center overflow-hidden flex items-center justify-center relative">
+  <div class=" h-dvh text-center overflow-hidden flex items-center justify-center relative">
     <transition name="slide" mode="out-in">
       <component :is="currentPageComponent" :key="currentPage" class="absolute w-full h-full flex items-center justify-center"/>
     </transition>
@@ -84,7 +85,6 @@ const changeCurrentPage = () => {
         <div class="size-4 rounded-full" :class="currentPage == 4 ? 'bg-main-blue' : 'bg-black'"></div>
       </div>
     </transition>
-    <span class="absolute text-5xl bottom-40">{{response}}</span>
     <OnboardingButton @click="changeCurrentPage" class="absolute bottom-[34px]" :text="nextButtonText"/>
   </div>
 </template>

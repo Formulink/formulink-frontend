@@ -14,7 +14,7 @@ const sections = ref<Section[]>([])
 
 
 onMounted(()=>{
-  if (localStorage.getItem("user_id") !== '1234'){
+  if (!localStorage.getItem("user_id")){
     navigateTo('/onboarding')
   }
 })

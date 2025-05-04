@@ -4,11 +4,38 @@ import navigateTo from '@/funcs/navigate.ts'
 const props = defineProps({
   taskId: String,
 })
+
+
+
+
+const newConversation = async () => {
+  try{
+    const r = await fetch("http://localhost:8082/conversation/new", {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: localStorage.getItem('user_id')
+      })
+    })
+    const resp = await r.json()
+    navigateTo(`/ai/${resp}?id=${props.taskId}`)
+
+
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+
 </script>
+
+
 
 <template>
   <button
-    @click="navigateTo(`/ai?id=${props.taskId}`)"
+    @click="newConversation"
     class="neuro-button relative px-6 py-2.5 rounded-full font-medium text-white overflow-hidden">
     <span class="relative z-10 text-black">Помощь</span>
   </button>
