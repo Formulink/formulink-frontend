@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import Icon from '/public/icon.vue'
 import DescriptionText from '@/components/onboarding/components/description-text.vue'
+import Icon_standalone from '../../../../public/icon_standalone.vue'
 </script>
 
 <template>
-  <div class="w-full h-full text-center overflow-hidden">
-    <div class="mt-20 h-full flex flex-col justify-between items-center  pb-[350px]">
-      <icon class="mt-20 mr-10" />
-      <DescriptionText description="Ваш персональный помощник по многим дисциплинам" text="Добро пожаловать"/>
-    </div>
-
+  <div class="w-full h-full flex flex-col items-center justify-center gap-10 text-center px-4">
+    <icon_standalone class="size-48" />
+    <DescriptionText
+      description="Ваш персональный помощник по многим дисциплинам"
+      text="Добро пожаловать"
+    />
   </div>
 </template>
-

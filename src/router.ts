@@ -11,6 +11,7 @@ import ProfilePage from '@/pages/profile/ProfilePage.vue'
 import FavoritesPage from '@/pages/profile/FavoritesPage.vue'
 import RecentlyPage from '@/pages/profile/RecentlyPage.vue'
 import AIPage from '@/pages/ai/AI-page.vue'
+import ConversationsPage from '@/pages/ai/ConversationsPage.vue'
 
 const routes = [
   {path: '/', component: Main},
@@ -24,9 +25,8 @@ const routes = [
   { path: '/profile', component: ProfilePage},
   { path: '/favorites', component: FavoritesPage },
   { path: '/recently', component: RecentlyPage },
-  {path: '/ai/:conversation_id', component: AIPage},
-  {path: '/conversations', component: ConversationsPage}
-
+  {path: '/ai/:conversation_id/', component: AIPage},
+  {path: '/conversations', component: ConversationsPage},
 ]
 
 export const router = createRouter({

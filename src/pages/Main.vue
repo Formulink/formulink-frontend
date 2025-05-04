@@ -13,7 +13,11 @@ const formula = ref<Formula | null>(null)
 const sections = ref<Section[]>([])
 
 
-
+onMounted(()=>{
+  if (localStorage.getItem("user_id") !== '1234'){
+    navigateTo('/onboarding')
+  }
+})
 
 
 onMounted(async () => {

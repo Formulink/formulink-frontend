@@ -16,7 +16,8 @@ const taskId = ref<string>('')
 const task = ref<Task>()
 const messages = ref<Message[]>([]);
 
-const conversationId = ref<string | null>(null)
+
+const conversationId = ref<string>('')
 
 
 const scrollToBottom = () => {

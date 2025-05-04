@@ -28,12 +28,40 @@ const nextButtonText = computed(() => {
   }
 })
 
-onMounted(()=>{
-  const username = window.Telegram.WebApp.initDataUnsafe.user?.user_id
-  if (username != ""){
-    localStorage.setItem("user_id", username)
+const username = ref('')
+const userId = ref('')
+const tg = ref()
+
+const response = ref()
+
+onMounted(async () => {
+  tg.value = window.Telegram.WebApp
+
+  username.value = tg.value?.initDataUnsafe.user?.username || ''
+  userId.value = tg.value?.initDataUnsafe.user.id?.toString() || ''
+
+  if (username.value && userId.value) {
+    localStorage.setItem("user_id", username.value)
+    try {
+      const resp = await fetch('http://localhost:8082/auth', {
+        method: "POST",
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id: userId.value,
+          username: username.value
+        })
+      })
+
+      response.value = await resp.json()
+      alert(respresp)
+    } catch (e) {
+      console.error(e)
+    }
   }
 })
+
 
 const changeCurrentPage = () => {
   if (currentPage.value < 5) {
@@ -56,8 +84,8 @@ const changeCurrentPage = () => {
         <div class="size-4 rounded-full" :class="currentPage == 4 ? 'bg-main-blue' : 'bg-black'"></div>
       </div>
     </transition>
-
-    <OnboardingButton @click="changeCurrentPage" class="absolute ml-4 bottom-[34px]" :text="nextButtonText"/>
+    <span class="absolute text-5xl bottom-40">{{response}}</span>
+    <OnboardingButton @click="changeCurrentPage" class="absolute bottom-[34px]" :text="nextButtonText"/>
   </div>
 </template>
 

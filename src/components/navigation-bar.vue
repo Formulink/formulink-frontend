@@ -5,7 +5,7 @@ import { computed, ref } from 'vue'
 const els = [
   { url: "/", icon: Home, label: "Главная" },
   { url: "/subjects", icon: Book, label: "Формулы" },
-  { url: "/ai", icon: Star, label: "AI" },
+  { url: "/conversations", icon: Star, label: "AI" },
   { url: "/search", icon: Search, label: "Поиск" },
   { url: "/profile", icon: User, label: "Профиль" },
 ];

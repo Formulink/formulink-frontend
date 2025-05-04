@@ -14,7 +14,7 @@ const props = defineProps({
 <template>
   <div class="flex flex-col text-center">
     <h1
-      class="text-[32px] font-semibold text-basic-gradient"
+      class="text-4xl font-bold text-main-blue"
     >
       {{props.text}}
     </h1>
