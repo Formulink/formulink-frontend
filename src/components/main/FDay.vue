@@ -29,7 +29,7 @@ const sectionName = computed(()=>{
 <template>
   <div
     @click="navigateTo(`/formulas/${props.id}`)"
-    class="w-full p-8 rounded-2xl shadow-2xl shadow-black/5 gr min-h-[150px] flex flex-col gap-2">
+    class="w-full p-8 rounded-2xl shadow-2xl shadow-black/5 bg-white min-h-[150px] flex flex-col gap-2">
     <!-- header -->
     <div class="flex justify-between items-center w-full">
       <div class="flex flex-col">
@@ -46,10 +46,6 @@ const sectionName = computed(()=>{
 
     <!-- footer -->
     <div class="flex justify-between items-center w-full ">
-      <div class="flex gap-2">
-        <Clock class="text-black/40" />
-        <span class="font-sf-regular text-black/40">Добавлено 2 дня назад</span>
-      </div>
       <div @click="navigateTo(`/formulas/${props.id}`)" class="cursor-pointer flex gap-2">
         <span
           class="text-main-blue cursor-pointer"
@@ -63,7 +59,5 @@ const sectionName = computed(()=>{
 </template>
 
 <style scoped>
-.gr {
-  @apply bg-gradient-to-b from-blue-50 to-[#FCF4FC];
-}
+
 </style>

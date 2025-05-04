@@ -12,11 +12,11 @@ onMounted(async () =>{
 
 const updateConversations = async () => {
   try{
-    const resp = await fetch('http://localhost:8082/conversations/11579455-ff4a-42b6-812f-c262c1dd0223', {
+    const resp = await fetch(`http://localhost:8082/conversations/${localStorage.getItem('user_id')}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
-      }
+      },
     })
     conversations.value = await resp.json()
   } catch(e){
@@ -47,7 +47,7 @@ const newConversation = async () => {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        user_id: "11579455-ff4a-42b6-812f-c262c1dd0223"
+        user_id: localStorage.getItem('user_id')
       })
     })
   } catch (e) {
