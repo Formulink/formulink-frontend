@@ -12,7 +12,7 @@ onMounted(async () =>{
 
 const updateConversations = async () => {
   try{
-    const resp = await fetch(`http://localhost:8082/conversations/${localStorage.getItem('user_id')}`, {
+    const resp = await fetch(`https://formulink.duckdns.org/conversations/${localStorage.getItem('user_id')}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json'
@@ -26,7 +26,7 @@ const updateConversations = async () => {
 
 const deleteConversation = async (conversationId : string) =>{
   try{
-    await fetch(`http://localhost:8082/conversation/${conversationId}`, {
+    await fetch(`https://formulink.duckdns.org/conversation/${conversationId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -41,7 +41,7 @@ const deleteConversation = async (conversationId : string) =>{
 
 const newConversation = async () => {
   try{
-    await fetch("http://localhost:8082/conversation/new", {
+    await fetch("https://formulink.duckdns.org/conversation/new", {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

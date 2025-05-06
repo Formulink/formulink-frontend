@@ -42,7 +42,7 @@ onMounted(async () => {
 
   if (username.value != '' && userId.value != 0) {
     try {
-      const r = await fetch('http://localhost:8082/auth', {
+      const r = await fetch('https://formulink.duckdns.org/auth', {
         method: "POST",
         headers: {
           'content-type': 'application/json'

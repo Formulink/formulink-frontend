@@ -27,7 +27,7 @@ onMounted(async () => {
   try {
 
     loading.value = true
-    const resp = await fetch(`http://localhost:8082/formulas/${formulaId}`)
+    const resp = await fetch(`https://formulink.duckdns.org/formulas/${formulaId}`)
     if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`)
     formula.value = await resp.json()
     console.log("Formula loaded:", formula.value)
@@ -41,7 +41,7 @@ onMounted(async () => {
 
 onMounted(async ()=>{
   try{
-    const resp = await fetch(`http://localhost:8082/tasks/${formulaId}`)
+    const resp = await fetch(`https://formulink.duckdns.org/tasks/${formulaId}`)
     tasks.value = await resp.json()
     console.log("tasks: ", resp)
   } catch(err){
@@ -51,7 +51,7 @@ onMounted(async ()=>{
 
 onMounted(async ()=>{
   try{
-    const resp = await fetch("http://localhost:8082/like-status", {
+    const resp = await fetch("https://formulink.duckdns.org/like-status", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ onMounted(async ()=>{
 
 const handleLike = async () =>{
   try{
-    await fetch(`http://localhost:8082/like`, {
+    await fetch(`https://formulink.duckdns.org/like`, {
       method: 'POST',
       headers: {
         'content-type' : 'application/json'

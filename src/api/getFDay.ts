@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as url from 'node:url'
 
 export const GetFday = async () => {
-  fetch('http://localhost:8082/formulas/fday')
+  fetch('https://formulink.duckdns.org/formulas/fday')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');

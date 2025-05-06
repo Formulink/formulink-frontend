@@ -9,7 +9,7 @@ const formulas = ref<Formula[]>([])
 
 onMounted(async () => {
   try {
-    const resp = await fetch(`http://localhost:8082/liked-formulas/${localStorage.getItem('user_id')}`)
+    const resp = await fetch(`https://formulink.duckdns.org/liked-formulas/${localStorage.getItem('user_id')}`)
     if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`)
     formulas.value = await resp.json()
     console.log(formulas.value)

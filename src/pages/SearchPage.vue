@@ -9,7 +9,7 @@ const allFormulas = ref<Formula[]>([])
 
 onMounted(async () => {
   try {
-    const res = await fetch('http://localhost:8082/formulas/all')
+    const res = await fetch('https://formulink.duckdns.org/formulas/all')
     if (!res.ok) throw new Error(`Ошибка: ${res.status}`)
     allFormulas.value = await res.json()
   } catch (err) {

@@ -14,7 +14,7 @@ onMounted(async () => {
   const id = route.params.section_id
   console.log(id)
   try {
-    const resp = await fetch(`http://localhost:8082/${id}/formulas`)
+    const resp = await fetch(`https://formulink.duckdns.org/${id}/formulas`)
     if (!resp.ok) throw new Error(`Fetch failed: ${resp.status}`)
     formulas.value = await resp.json()
     console.log(formulas.value)

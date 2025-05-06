@@ -44,7 +44,7 @@ onMounted(async () => {
 
   try {
     thinking.value = true
-    const resp = await fetch(`http://localhost:8082/task/${taskId.value}`)
+    const resp = await fetch(`https://formulink.duckdns.org/task/${taskId.value}`)
     task.value = await resp.json()
     console.log("task: ", task.value)
 
@@ -68,7 +68,7 @@ const solve = async (task: Task) => {
 
   try {
     thinking.value = true
-    const resp = await fetch('http://localhost:8082/ai', {
+    const resp = await fetch('https://formulink.duckdns.org/ai', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ const sendMessage = async (text: string) => {
 
   try {
     thinking.value = true
-    const resp = await fetch('http://localhost:8082/ai', {
+    const resp = await fetch('https://formulink.duckdns.org/ai', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ const sendMessage = async (text: string) => {
 
 const getConversation = async () => {
   try {
-    let resp = await fetch(`http://localhost:8082/conversation/${conversationId.value}`, {
+    let resp = await fetch(`https://formulink.duckdns.org/conversation/${conversationId.value}`, {
       method: 'GET',
       headers: {
         'content-type': 'application/json',

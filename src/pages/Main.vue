@@ -22,7 +22,7 @@ onMounted(()=>{
 
 onMounted(async () => {
   try {
-    const res = await fetch('http://localhost:8082/formulas/fday')
+    const res = await fetch('https://formulink.duckdns.org/formulas/fday')
     if (!res.ok) throw new Error(`Ошибка: ${res.status}`)
     formula.value  = await res.json()
   } catch (err: never) {
@@ -33,7 +33,7 @@ onMounted(async () => {
 
 onMounted(async()=>{
   try{
-    const res = await fetch("http://localhost:8082/sections")
+    const res = await fetch("https://formulink.duckdns.org/sections")
     if (!res.ok) throw new Error(res.statusText)
     sections.value = await res.json()
     secitons.value = shuffle(sections.value.slice(0, 6))

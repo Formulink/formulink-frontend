@@ -10,7 +10,7 @@ const props = defineProps({
 
 const newConversation = async () => {
   try{
-    const r = await fetch("http://localhost:8082/conversation/new", {
+    const r = await fetch("https://formulink.duckdns.org/conversation/new", {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

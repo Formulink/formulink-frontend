@@ -8,7 +8,7 @@ import type { Subject } from '@/types/subject.ts'
 const subjects = ref<Subject[]>([])
 
 onMounted(async ()=>{
-  const response = await fetch("http://localhost:8082/subjects")
+  const response = await fetch("https://formulink.duckdns.org/subjects")
   subjects.value = await response.json()
 
 })
